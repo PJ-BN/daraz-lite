@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <nav class="px-4 py-4 bg-purple-900 flex justify-between">
+            <div >
+                <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="logo" class="w h-6 rounded-full cursor-pointer">
+            </div>
+            <div  class= "mx-2 cursor-pointer justify-center">
+                <input type="text" name = "search"><button>Search</button>
+
+            </div>
+            <ul class="flex justify-end  text-white" >
+                <li class= "mx-2 cursor-pointer">Home</li>
+                <li class= "mx-2 cursor-pointer">Discover</li>
+                <li class= "mx-2 cursor-pointer">Sign in</li>
+                <li class= "mx-2 cursor-pointer">Cart</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Add default main content here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+</html>
