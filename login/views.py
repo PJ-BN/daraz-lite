@@ -19,6 +19,8 @@ def login(request):
                     return HttpResponse("correct")
                 
         return HttpResponse("Incorrect")
+    elif request.method =="GET":
+        return redirect("page")
             
             
         
