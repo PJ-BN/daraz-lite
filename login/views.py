@@ -1,5 +1,6 @@
 from django.shortcuts import render , redirect
 from .models import *
+from catalog.views import home
 
 # Create your views here.
 from django.http import HttpResponse 
@@ -16,11 +17,11 @@ def login(request):
             if i["email"] == username:
                 if i["password"] == password:
                     
-                    return HttpResponse("correct")
+                    return redirect(home)
                 
         return HttpResponse("Incorrect")
     elif request.method =="GET":
-        return redirect("page")
+        return redirect(page)
             
             
         

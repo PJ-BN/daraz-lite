@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block navcart %}
+<li class= "mx-2 cursor-pointer">Cart</li>
+{% endblock %} 
+
+{% block navprofile %}
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
+{% endblock %} 
+
