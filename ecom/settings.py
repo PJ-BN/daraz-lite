@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-d-_@n5r$$@y%_^q3uaiva_m(do2q0i*-q_p=sjpjf8jm$%1nya
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+NPM_BIN_PATH = r"C:\\Program Files\\nodejs\\npm.cmd"
 ALLOWED_HOSTS = []
 
 
@@ -61,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'login/templates'),
-                 os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'theme/templates'),
                  os.path.join(BASE_DIR, 'catalog/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,8 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
-                    os.path.join(BASE_DIR,'login/static'),
-                    os.path.join(BASE_DIR,'node_modules'),]
+                    os.path.join(BASE_DIR,'login/static'),]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -143,5 +143,3 @@ TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
-# NPM_BIN_PATH = "C:\Program Files\nodejs"
