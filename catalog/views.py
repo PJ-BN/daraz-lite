@@ -18,3 +18,10 @@ def home(request):
 def profile(request):
     if request.method =='GET':
         return render(request, 'profile.html')
+    
+def cart(request):
+    if request.method == "GET":
+        context = {
+        "data" : [1,2,3,4,5,6,7,8,9,10]
+            }
+        return render(request, 'cart.html', context)

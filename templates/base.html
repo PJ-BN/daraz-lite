@@ -4,7 +4,10 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
+    {% block style %}
     <link rel="stylesheet" href="{% static 'output.css' %}">
+    
+    {% endblock %}
 </head>
 <body>
     <header>
@@ -33,7 +36,6 @@
 
     <main>
         {% block content %}
-        <!-- Add default main content here -->
         {% endblock %}
     </main>
 
