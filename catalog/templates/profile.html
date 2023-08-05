@@ -5,17 +5,51 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <div name = "personalprofile">
+<div class ="bg-gray-300 p-2 ">
+    <div class= "flex text-xl justify-center p-4 font-bold"> Manage my Account</div>
+
+    <div class="flex justify-center">
+        <div name = "personalprofile" class="bg-white p-5 m-5 text-sm">
+            <h3 class= "text-lg ">Personal Profile</h3>
+
+            <span> {{ f_name }} {{ l_name}}</span><br>
+            <span> {{ email }} </span>
 
         </div>
 
-        <div name = "Address">
+        <div name = "Address" class ="bg-white p-5 m-5 text-sm">
+            <h3 class="text-lg">Address Book</h3>
+            <b>{{f_name}}</b><br>
+            <span>{{ address}}</span>
+            <span>{{ phone }}</span>
 
         </div>
     </div>
 
-    <div name ="recent-order">
+    <div name ="recent-order" class="m-2 p-3 bg-white">
+        <div>Recent Orders</div>
+        <div class="flex justify-between mt-2">
+            <div>order</div>
+            <div>Placed On</div>
+            <div>Items</div>
+            <div>Total</div>
+        </div>
+
+        <div class="flex justify-between mt-2">
+            <div>
+                {{order.0}}
+            </div>
+            <div>
+                {{time.0}}
+            </div>
+            <div>
+                {{items.0}}
+            </div>
+            <div>
+                {{total.0}}
+            </div>
+        </div>
     
     </div>
+</div>
 {% endblock content %}
