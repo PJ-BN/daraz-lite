@@ -5,19 +5,59 @@
 {% endblock %}
 
 {% block content %}
-    <div class = "flex justify-between bg-black px-6 ">
-        <div name = "purchases" class= "justify-start  text-5xl text-gray">
-           <h1 class= "text-5xl"> hello world </h1>
+    <div class = "flex justify-between px-6 py-6 bg-gray-200 text-gray-500 ">
+        <div name = "purchases" class= "justify-right  text-xl text-gray mt-5 mb-5 pl-20 pr-20 ">
             
-        </div>
+            <div class="p-1 bg-white pr-10">
 
-        <div name = "Summary" class= "justify-end border-black">
-            <h3 class = "text-xl">Order Summary</h3>
+                <table  class="table-auto text-left border-separate border-spacing-px border-spacing-y-2 border-spacing-x-6  border-slate-500  ">
+                    <tr >
+                        
+                        <th colspan="5" class="text-left"> 
+                            <input type="checkbox" name="" id="">
+                            Porduct Name
+                        </th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">
+
+                            <input type="checkbox" name="" id="">
+                        </td>
+                        
+                        <td rowspan="4" colspan="3">
+                            <img src="https://randomuser.me/api/portraits/women/72.jpg" class="w-16" alt="image">
+                            product
+                        </td>
+                        
+                        <td>Price</td>
+                        <td rowspan="2">add 1 less</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            delete
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            </div>
+        <div name = "Summary" class= "justify-left  mt-5 mb-5 mr-20 bg-white p-5">
+            <h4 class = "text-lg text-black">Order Summary</h4>
             
             <div class= "flex justify-between  ">
                 <p class = " justify-start text-sm "> Subtotal</p>
                 <p class = "justify-end text-sm"> Rs. 0</p>
+                
             </div>
+            <div>
+                <input class = "rounded-sm text-sm mt-1 mb-1 " type = "text" name = "voucher" placeholder = "Enter Voucher Code">
+                <button class= "bg-blue-500 rounded-sm p-1 pl-3 pr-3 text-white"> Apply</button>
+            </div>
+            <div class= "flex justify-between  ">
+                <p class = " justify-start text-sm "> Total</p>
+                <p class = "justify-end text-sm"> Rs. 0</p>
+            </div>
+            <button class="m-1 p-1 pl-10 pr-10 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 focus:outline-none focus:ring focus:ring-violet-300 text-center text-gray-200"> Proceed to checkout</button>
 
         </div>
     </div>
