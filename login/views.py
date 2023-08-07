@@ -5,6 +5,7 @@ from catalog.views import home
 # Create your views here.
 from django.http import HttpResponse 
 
+
 def page(request):
     return render(request,'login/index.html')
     
@@ -16,7 +17,8 @@ def login(request):
         for i in quer:
             if i["email"] == username:
                 if i["password"] == password:
-                    
+                    request.session['username']= username
+                    request.session.save()
                     return redirect(home)
                 
         return HttpResponse("Incorrect")

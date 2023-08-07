@@ -8,13 +8,23 @@ def landing(request):
     }
     return render(request, 'landing.html', context)
 
+def logout(request):
+    del request.session["username"]
+    
+    return redirect(home)
+
 
 def home(request):
+    username = ""
+    if 'username' in request.session:
+        username=request.session['username']
+        
     context = {
         "data" : [1,2,3,4,5,6,7,8,9,10],
         "product": "Mouse",
         "price": 1000,
-        "rating": 4
+        "rating": 4,
+        "username": username
     }
     return render(request, 'home.html', context)
 

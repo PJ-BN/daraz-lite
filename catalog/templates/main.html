@@ -5,10 +5,37 @@
 <li class= "mx-2 cursor-pointer"><a href = "{% url 'cart' %}"> Cart</a></li>
 {% endblock %} 
 
-{% block navprofile %}
+{% comment %} {% block navprofile %}
 <li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
 {% endblock %} 
 
 {% block logout %}
 <li class= "mx-2 cursor-pointer"><a href = "{% url 'landing' %}"> Logout</a></li>
+{% endblock %}  {% endcomment %}
+
+{% block navprofile %}
+{% if username == "" %}
+
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> Profile</a></li>
+
+{% else%}
+
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
+
+{% endif %}
 {% endblock %} 
+
+{% block navsign %}
+
+{% if username == "" %}
+
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> signin</a></li>
+
+{% else%}
+
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'logout' %}"> Logout</a></li>
+
+{% endif%}
+
+{% endblock %} 
+

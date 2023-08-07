@@ -24,14 +24,14 @@
             </div>
             <ul class="flex justify-end  text-white" >
                 <li class= "mx-2 cursor-pointer"><a href ="{% url 'home' %}">Home</a></li>
-                <li class= "mx-2 cursor-pointer">Discover</li>
                 
-                {% block navsign%}
-                {% endblock %}
                 {% block navcart%}
                 {% endblock %}
                 {% block navprofile%}
                 {% endblock %}
+                {% block navsign%}
+                {% endblock %}
+                
             </ul>
         </nav>
     </header>
