@@ -16,7 +16,7 @@
 {% block navprofile %}
 {% if username == "" %}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> Profile</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'page' %}"> Profile</a></li>
 
 {% else%}
 
@@ -29,7 +29,7 @@
 
 {% if username == "" %}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> signin</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'page' %}"> signin</a></li>
 
 {% else%}
 
