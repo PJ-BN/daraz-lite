@@ -18,16 +18,6 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('email')
         password = request.POST.get('pswd')
-        
-        # quer = Loginid.objects.all().values()
-        # for i in quer:
-        #     if i["email"] == username:
-        #         if i["password"] == password:
-        #             request.session['username']= username
-        #             request.session.save()
-        #             return redirect(home)
-                
-        # return HttpResponse("Incorrect")
         user = authenticate(request, username= username, password=password)
         auth_login( request, user)
         return redirect(home)
@@ -45,20 +35,10 @@ def signup(request):
         password = request.POST.get('pswd')
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
+        address = request.POST.get("address")
+        name = first_name+ " " + last_name
+        datab = Loginid(email = username, address = address, name= name )
         
-        # quer = Loginid.objects.values_list("email")
-        # quer = [i[0] for i in quer]
-        # id = len(quer) + 1 
-        # print(quer)
-        # if username not in quer:
-        #     l = Loginid()
-        #     l.name = name
-        #     l.email = username
-        #     l.password = password
-        #     l.id = id
-        #     l.save()
-        #     return redirect("page")
-        # return HttpResponse("this username already exisis")
         
         user = User.objects.create_user(username=username, password=password , first_name = first_name, last_name = last_name )
         
@@ -66,6 +46,7 @@ def signup(request):
             user.save()
             us = authenticate(request, username= username, password=password)
             auth_login(request, us)
+            datab.save()
         
             return redirect(home)
         

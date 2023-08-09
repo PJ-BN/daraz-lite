@@ -5,6 +5,6 @@ urlpatterns = [
     path('', home, name = "home"),
     path('profile', profile, name = "profile"),
     path('cart', cart, name = "cart"),
-    path('logout', logout, name = "logout")
+    
     
 ]
