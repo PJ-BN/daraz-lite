@@ -4,6 +4,8 @@ from catalog.views import home
 from django.http import HttpResponse 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login as auth_login
+
 from django.contrib import messages
 
 # Create your views here.
@@ -16,15 +18,19 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('email')
         password = request.POST.get('pswd')
-        quer = Loginid.objects.all().values()
-        for i in quer:
-            if i["email"] == username:
-                if i["password"] == password:
-                    request.session['username']= username
-                    request.session.save()
-                    return redirect(home)
+        
+        # quer = Loginid.objects.all().values()
+        # for i in quer:
+        #     if i["email"] == username:
+        #         if i["password"] == password:
+        #             request.session['username']= username
+        #             request.session.save()
+        #             return redirect(home)
                 
-        return HttpResponse("Incorrect")
+        # return HttpResponse("Incorrect")
+        user = authenticate(request, username= username, password=password)
+        auth_login( request, user)
+        return redirect(home)
     elif request.method =="GET":
         return render(request, "login\index.html")
             
@@ -58,9 +64,8 @@ def signup(request):
         
         if user is not None:
             user.save()
-            us = authenticate(username= username, password=password)
-            login(request, us)
-            messages.success("succees")
+            us = authenticate(request, username= username, password=password)
+            auth_login(request, us)
         
             return redirect(home)
         

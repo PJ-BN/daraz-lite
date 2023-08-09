@@ -14,26 +14,27 @@
 {% endblock %}  {% endcomment %}
 
 {% block navprofile %}
-{% if username == "" %}
+{% if user.is_authenticated %}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'page' %}"> Profile</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
 
 {% else%}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> Profile</a></li>
+
 
 {% endif %}
 {% endblock %} 
 
 {% block navsign %}
 
-{% if username == "" %}
+{% if user.is_authenticated %}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'page' %}"> signin</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'logout' %}"> Logout</a></li>
 
 {% else%}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'logout' %}"> Logout</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> signin</a></li>
 
 {% endif%}
 
