@@ -1,1 +1,1 @@
-# daraz-lite.
+# daraz-lite
