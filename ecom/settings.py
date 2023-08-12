@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'tailwind',
     'catalog',
     'theme',
+    'seller',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -65,6 +66,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'login/templates'),
                  os.path.join(BASE_DIR, 'theme/templates'),
+                 os.path.join(BASE_DIR, 'seller/templates'),
                  os.path.join(BASE_DIR, 'catalog/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
