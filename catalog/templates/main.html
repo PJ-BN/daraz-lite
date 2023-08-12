@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block home %}
+
+<li class= "mx-2 cursor-pointer"><a href ="{% url 'home' %}">Home</a></li>
+
+
+{% endblock %}
 
 {% block navcart %}
 <li class= "mx-2 cursor-pointer"><a href = "{% url 'cart' %}"> Cart</a></li>
@@ -12,6 +18,8 @@
 {% block logout %}
 <li class= "mx-2 cursor-pointer"><a href = "{% url 'landing' %}"> Logout</a></li>
 {% endblock %}  {% endcomment %}
+
+
 
 {% block navprofile %}
 {% if user.is_authenticated %}

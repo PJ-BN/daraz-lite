@@ -23,8 +23,8 @@
 
             </div>
             <ul class="flex justify-end  text-white" >
-                <li class= "mx-2 cursor-pointer"><a href ="{% url 'home' %}">Home</a></li>
-                
+                {% block home%}
+                {% endblock %}
                 {% block navcart%}
                 {% endblock %}
                 {% block navprofile%}
