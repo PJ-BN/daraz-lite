@@ -22,13 +22,9 @@
 
 
 {% block navprofile %}
-{% if user.is_authenticated %}
+{% if  user.is_authenticated %}
 
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
-
-{% else%}
-
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> Profile</a></li>
+<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> Profile</a></li>
 
 
 {% endif %}
