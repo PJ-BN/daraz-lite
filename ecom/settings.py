@@ -149,3 +149,6 @@ INTERNAL_IPS = [
 ]
 
 LOGIN_REDIRECT_URL = 'home' 
+
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images/')
