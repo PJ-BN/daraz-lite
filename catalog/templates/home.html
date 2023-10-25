@@ -47,29 +47,34 @@
     
     <div class="bg-gray-300 p-5 px-20 grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  gap-4 max-w-[80rem]  ">
     
-        {% for i in data %}
+
+        {% if data %}
+            {% for i in data %}
+            
         
-    
-            <div class = "m-5 mx-10 border-x-1 p-2  bg-white  text-lg w-[11rem] block h-[17rem] hover:border-2 border-gray-400	 ">
-                <div>
-                    <img class = " w-60" src="https://randomuser.me/api/portraits/men/18.jpg" alt="product_image">
+                <div class = "m-5 mx-10 border-x-1 p-2  bg-white  text-lg w-[11rem] block h-[17rem] hover:border-2 border-gray-400	 ">
+                    <div>
+                        <img class = " w-60 h-[10rem]" src="{{ MEDIA_URL }}{{i.image}}" alt="product_image">
+                    </div>
+                    <br>
+                    <div>
+                        <h2>{{i.name}}</h2>
+                
+                    </div>
+                    <div>
+                        <h2 class="text-orange-600">Rs. {{i.price}}</h2>
+                    </div>
+                    <div>
+                        <h4 class="text-green-600 text-sm">{{i.review}}</h4>
+                    </div>
+                
+                
                 </div>
-                <div>
-                    <h2>{{product}}</h2>
-            
-                </div>
-                <div>
-                    <h2 class="text-orange-600">Rs. {{price}}</h2>
-                </div>
-                <div>
-                    <h4 class="text-green-600 text-sm">{{rating}}</h4>
-                </div>
-            
-            
-            </div>
-            
-      
-        {% endfor %}
+                
+        
+            {% endfor %}
+
+        {% endif %}
     </div>
    
 </div>

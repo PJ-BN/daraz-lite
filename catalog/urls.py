@@ -7,7 +7,7 @@ urlpatterns = [
     path('', home, name = "home"),
     path('profile', profile, name = "profile"),
     path('cart', cart, name = "cart"),
-    path('image', image, name = "image")
+    
     
     
 ]

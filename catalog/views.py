@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 import os
+from .models import Product
 
 
 def home(request):
+    
+    data = Product.objects.all()
            
+  
+    
     context = {
-        "data" : [1,2,3,4,5,6,7,8,9,10,11,12],
-        "product": "Mouse",
-        "price": 1000,
-        "rating": 4,
+        "data": data
     }
     return render(request, 'home.html', context)
 
@@ -48,10 +50,4 @@ def cart(request):
             }
         return render(request, "cart.html", context=context)
  
-
-def image(request):
-    path = settings.MEDIA_ROOT
-    img_list = os.listdir(path + '/images')
-    context = {'images': img_list}
-    return render(request, "img.html", context)
 
