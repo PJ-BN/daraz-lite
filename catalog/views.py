@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-
+from django.conf import settings
+import os
 
 
 def home(request):
@@ -47,3 +48,10 @@ def cart(request):
             }
         return render(request, "cart.html", context=context)
  
+
+def image(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images')
+    context = {'images': img_list}
+    return render(request, "img.html", context)
+
