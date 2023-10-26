@@ -50,4 +50,5 @@ def cart(request):
             }
         return render(request, "cart.html", context=context)
  
-
+def product(request):
+    return render(request, "product.html")
