@@ -7,10 +7,7 @@ urlpatterns = [
     path('', home, name = "home"),
     path('profile', profile, name = "profile"),
     path('cart', cart, name = "cart"),
-    path('product', product, name = "product"),
-    
-    
-    
+    path('<slug:slug>', product, name = "post-slug")   
     
 ]
 

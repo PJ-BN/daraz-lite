@@ -9,4 +9,5 @@ class Product(models.Model):
     image = models.ImageField(upload_to="images/" )
     review = models.FloatField()
     quantity = models.IntegerField()
+    slug = models.SlugField()
     

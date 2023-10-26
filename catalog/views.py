@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 import os
 from .models import Product
@@ -50,5 +50,6 @@ def cart(request):
             }
         return render(request, "cart.html", context=context)
  
-def product(request):
-    return render(request, "product.html")
+def product(request, slug):
+    identify_slug = get_object_or_404(Product, slug = slug)
+    return render(request, "product.html", {'post' : identify_slug})
