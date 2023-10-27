@@ -12,6 +12,42 @@
 
 {% block content %}
 
-{{ data.name }}
-<img src= "images/{{ data.image}}" alt  = "data.name">
+<div class = "bg-gray-200">
+    <br>
+
+
+    <div class = " m-5 pl-5 mx-40 h-[40rem] bg-white grid grid-cols-3">
+        <div id = "image" class = "py-10">
+
+            <img src= "images/{{ data.image}}" alt  = "data.name" class = "h-[15rem] w-[20rem]">
+        </div>
+
+        <div id = "detail" class = "py-10  ">
+            <p class= "text-xl">
+
+                {{ data.name }}
+            </p>
+            <br>
+            <br>
+
+            <hr>
+            <br>
+            <p class= "text-3xl text-orange-700"> Rs. {{ data.price}} </p>
+        </div>
+
+        <div id = "delivery" class = "py-10  bg-[#fafafa]">
+            nepal
+        </div>
+        
+        
+    
+    
+    
+    </div>
+    <br>
+
+</div>
+
+
+
 {% endblock %}
