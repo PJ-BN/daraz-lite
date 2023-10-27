@@ -52,4 +52,10 @@ def cart(request):
  
 def product(request, slug):
     identify_slug = get_object_or_404(Product, slug = slug)
-    return render(request, "product.html", {'post' : identify_slug})
+    data = Product.objects.get(slug= slug)
+    context = {
+        'request': request,
+        'post' : identify_slug,
+        'data' : data,
+    }
+    return render(request, "product.html",context)
