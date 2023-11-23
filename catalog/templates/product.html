@@ -17,9 +17,31 @@
 
 
     <div class = " m-5 pl-5 mx-40 h-[40rem] bg-white grid grid-cols-3">
-        <div id = "image" class = "py-10">
+        <div id = "image" class = "py-10 m-3 mr-7">
 
             <img src= "images/{{ data.image}}" alt  = "data.name" class = "h-[15rem] w-[20rem]">
+            <br>
+            <hr>
+            <div class="flex py-3">
+                <button class = "px-5"> < </button>
+                
+                <button> 
+                <img src= "images/{{ data.image}}" alt  = "data.name" class = "h-[4rem] w-[3rem] m-2  ">
+                </button>
+
+                <button> 
+                    <img src= "images/{{ data.image}}" alt  = "data.name" class = "h-[4rem] w-[3rem] m-2  ">
+                </button>
+
+                <button> 
+                    <img src= "images/{{ data.image}}" alt  = "data.name" class = "h-[4rem] w-[3rem] m-2  ">
+                </button>
+                
+
+
+                <button  class = "px-5 py-3"> > </button>
+            </div>
+
         </div>
 
         <div id = "detail" class = "py-10  ">
@@ -33,9 +55,41 @@
             <hr>
             <br>
             <p class= "text-3xl text-orange-700"> Rs. {{ data.price}} </p>
+            <br>
+            <p> Promotions </p>
+            <br>
+            <hr>
+            <br>
+            <p> Color Family </p>
+            <br>
+
+            <div class = "flex">
+                <p> Size </p>
+                <button class = "mx-3"> M</button>
+                <button class = "mx-3"> L</button>
+                <button class = "mx-3"> XL</button>
+                <button class = "mx-3"> XXL</button>
+
+            </div>
+            <br>
+
+            <div class = "flex"> 
+                <p > Quantity </p>
+                <button class = "mx-3"> + </button>
+                <p class = "mx-3"> 1 </p>
+                <button class = "mx-3"> - </button>
+            </div>
+
+            <div class = "text-white">
+                <button class = "px-5 py-3 mt-5 mb-5 bg-blue-500  "> Buy Now </button>
+                <button class = "px-5 py-3 mt-5 mb-5 bg-orange-500"> Add to Cart </button>
+
+            </div>
+
+            
         </div>
 
-        <div id = "delivery" class = "py-10  bg-[#fafafa]">
+        <div id = "delivery" class = "py-10 px-5 bg-[#fafafa]">
             nepal
         </div>
         

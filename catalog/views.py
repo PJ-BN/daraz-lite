@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 import os
-from .models import Product
+from .models import *
 
 
 def home(request):
@@ -52,6 +52,7 @@ def cart(request):
  
 def product(request, slug):
     identify_slug = get_object_or_404(Product, slug = slug)
+    
     data = Product.objects.get(slug= slug)
     context = {
         'request': request,
