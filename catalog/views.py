@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 import os
 from .models import *
+from login.models import Loginid
 
 
 def home(request):
