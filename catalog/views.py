@@ -35,9 +35,13 @@ def profile(request):
         
             }
         return render(request, 'profile.html', context)
+    elif request.method =="POST":
+        print("done")
     
 def cart(request):
     if request.method == "GET":
+        
+        da = Cart.objects.all()
         
         context = {
         "data" : [1,2,3,4,5,6,7,8,9,10],
@@ -61,3 +65,7 @@ def product(request, slug):
         'data' : data,
     }
     return render(request, "product.html",context)
+
+def added_to_cart(request):
+    if request.method == "POST":
+        print('done')
