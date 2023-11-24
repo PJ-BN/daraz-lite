@@ -9,7 +9,6 @@
 {% block title %}
     Home
 {% endblock %}
-
 {% block content %}
 
 <div class = "bg-gray-200">
@@ -81,8 +80,8 @@
             </div>
 
             <div class = "text-white">
-                <button class = "px-5 py-3 mt-5 mb-5 bg-blue-500  "> Buy Now </button>
-                <button class = "px-5 py-3 mt-5 mb-5 bg-orange-500"> Add to Cart </button>
+                <button id = "buy_now" class = "px-5 py-3 mt-5 mb-5 bg-blue-500  "> Buy Now </button>
+                <button id = "add_to_cart" class = "px-5 py-3 mt-5 mb-5 bg-orange-500"> Add to Cart </button>
 
             </div>
 
@@ -161,5 +160,6 @@
 
 
 
+<script src="{% static 'js/index.js' %}"></script>
 
 {% endblock %}
