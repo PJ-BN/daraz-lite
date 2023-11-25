@@ -7,6 +7,9 @@ from login.models import Loginid
 
 def home(request):
     
+    if request.method == "POST":
+        print("done")
+        
     data = Product.objects.all()
            
   
