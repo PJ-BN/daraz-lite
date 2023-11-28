@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'catalog',
     'theme',
     'seller',
-    'django_jquery',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
