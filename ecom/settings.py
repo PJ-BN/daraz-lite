@@ -81,6 +81,9 @@ TEMPLATES = [
     },
 ]
 
+# CSRF_COOKIE_SECURE = True  # Set to False if not using HTTPS in development
+# CSRF_USE_SESSIONS = True
+
 WSGI_APPLICATION = 'ecom.wsgi.application'
 
 

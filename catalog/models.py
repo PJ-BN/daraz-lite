@@ -21,9 +21,9 @@ class Product(models.Model):
 class Cart(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.FloatField()
-    image = models.ImageField(upload_to="cart/" )
-    quantity = models.IntegerField()
+    price = models.CharField(max_length=200)
+    image = models.CharField(max_length=200)
+    quantity = models.CharField(max_length=200)
     slug = models.SlugField()
         
     def save(self, *args, **kwargs):

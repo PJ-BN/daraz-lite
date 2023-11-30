@@ -160,8 +160,16 @@
 <br>
 
 
+<script>
+    var name = " {{data.name}}"
+    var price = " {{data.price}}"
+    var image12 = " {{data.image}}"
+    var quantity = " 1"
+    var description = " {{data.description}}"
+    const myViewUrl = "{% url 'update_cart'  %}";
+    const csrfToken = " {{ csrf_token }}"
+</script>
 
-
-<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 {% endblock %}

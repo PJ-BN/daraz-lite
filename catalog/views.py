@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
+from django.http import JsonResponse
 import os
+import json
 from .models import *
 from login.models import Loginid
 
 
 def home(request):
+    print(request.POST)
     
     if request.method == "POST":
         print("done")
@@ -41,6 +44,27 @@ def profile(request):
     elif request.method =="POST":
         print("done")
     
+    
+def update_cart(request):
+    data = json.loads(request.body.decode('utf-8'))
+    name = data.get('key1')
+    price = data.get('key2')
+    image = data.get('key3')
+    quantity = data.get('key4')
+    description = data.get('key5')
+    try:
+        a = Cart.objects.get(name = name)
+    except:
+        ca = Cart(name = name , description = description, price = price , image = image, quantity = quantity , slug = name)
+        ca.save()
+        print("success")
+        
+    
+
+    return JsonResponse({'success' :'sucess'})
+    
+
+
 def cart(request):
     if request.method == "GET":
         
@@ -53,10 +77,15 @@ def cart(request):
         "email" : "prajwalbh25@gmail.com",
         "address":"Banbatika",
         "phone" : "9841615431" ,
+        }
         
-        
-            }
         return render(request, "cart.html", context=context)
+  
+        
+
+        
+    
+        
  
 def product(request, slug):
     identify_slug = get_object_or_404(Product, slug = slug)
