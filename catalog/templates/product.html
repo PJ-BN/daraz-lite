@@ -73,9 +73,9 @@
 
             <div class = "flex"> 
                 <p > Quantity </p>
-                <button class = "mx-3"> + </button>
-                <p class = "mx-3"> 1 </p>
-                <button class = "mx-3"> - </button>
+                <button id = "quantity_add" class = "mx-3"> + </button>
+                <p id = "quantity" class = "mx-3"> 1 </p>
+                <button id = "quantity_sub" class = "mx-3"> - </button>
             </div>
 
             <div class = "text-white">
@@ -161,15 +161,15 @@
 
 
 <script>
-    var name = " {{data.name}}"
-    var price = " {{data.price}}"
-    var image12 = " {{data.image}}"
-    var quantity = " 1"
-    var description = " {{data.description}}"
+    var name = "{{data.name}}"
+    var price = "{{data.price}}"
+    var image12 = "{{data.image}}"
+    var quantity = 1
+    var description = "{{data.description}}"
     const myViewUrl = "{% url 'update_cart'  %}";
-    const csrfToken = " {{ csrf_token }}"
+    const csrfToken = "{{ csrf_token }}"
 </script>
 
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 
 {% endblock %}

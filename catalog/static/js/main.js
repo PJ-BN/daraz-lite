@@ -1,4 +1,5 @@
 function cart() {
+    alert(" Added to the cart")
     fetch(myViewUrl, {
             method: 'POST',
             headers: {
@@ -24,6 +25,34 @@ function cart() {
             console.error('Error:', error);
         });
 
+
 }
 
-document.getElementById("buy_now").addEventListener("click", cart)
+function quantityChange(check) {
+    var x = document.getElementById("quantity");
+
+    if (quantity > 0) {
+
+        if (check == 1) {
+            quantity += 1
+        }
+
+    }
+    if (quantity > 1) {
+
+        if (check == 0) {
+            quantity -= 1
+        }
+    }
+
+    x.textContent = quantity
+}
+
+document.getElementById("add_to_cart").addEventListener("click", cart)
+
+document.getElementById("quantity_add").addEventListener("click", function() {
+    quantityChange(1)
+})
+document.getElementById("quantity_sub").addEventListener("click", function() {
+    quantityChange(0)
+})

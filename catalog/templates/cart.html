@@ -12,48 +12,53 @@
 
 <div class = "flex justify-center px-20 py-5 bg-gray-200 text-gray-500 r">
     <div name = "purchases" class= "justify-right   ">
-        {% for i in data %}
-        <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
+        {% if data%}
+            {% for i in data %}
+            <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
 
-            <div class="bg-white p-3 ">
-                <div class="pb-2 text-xl">
-                    <input type="checkbox" name="" id="">
-                    <span>Product Name</span>
-                </div>
+                <div class="bg-white p-3 ">
+                    <div class="pb-2 text-xl">
+                        <input type="checkbox" name="" id="">
+                        <span> {{i.name}} </span>
+                    </div>
 
-                <div class="flex justify-between pt-2 ">
-                    <div class="justify-start flex">
-                        <div class="pr-2">
-                            <input type="checkbox" name="" id="">
+                    <div class="flex justify-between pt-2 ">
+                        <div class="justify-start flex">
+                            <div class="pr-2">
+                                <input type="checkbox" name="" id="">
+                            </div>
+                            <div class="pr-2">
+                                <img src="images/{{ i.image}}" class="w-16" alt="image">
+                            </div>
+                            <div>
+                                <span class="text-lg"> {{i.name}} </span>
+                                <br>
+                                <span> {{i.description}} </span>
+                            </div>
                         </div>
-                        <div class="pr-2">
-                            <img src="https://randomuser.me/api/portraits/women/72.jpg" class="w-16" alt="image">
-                        </div>
-                        <div>
-                            <span class="text-lg">Product Name</span>
+                        <div class="justify-center px-12">
+                            <span class="text-lg">Rs. {{i.price}} </span>
                             <br>
-                            <span> info</span>
+                            <button type="button" class="bg-blue-800 text-white">like</button>
+                            <button class="bg-blue-800 text-white">del</button>
                         </div>
-                    </div>
-                    <div class="justify-center px-12">
-                        <span class="text-lg">Rs. 1000</span>
-                        <br>
-                        <button type="button" class="bg-blue-800 text-white">like</button>
-                        <button class="bg-blue-800 text-white">del</button>
-                    </div>
-                    <div class="justify-end px-5">
-                        <button type="button" class="bg-gray-400">---</button>
-                        1
-                        <button type="button" class="bg-gray-600">++</button>
-    
-                    </div>
-    
-                </div>
-                
-            </div>
-        </div>
+                        <div class="justify-end px-5 flex">
+                            <button id = "quantity_sub" > - </button>
+                            <p id = "quantity"> 
+
+                                {{i.quantity}}
+                            </p>
+                            <button id = "quantity_add" > + </button>
         
-        {% endfor %}
+                        </div>
+        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            {% endfor %}
+        {% endif %}
     </div>
     
     <div name = "Summary" class= "justify-left ml-4 ">
@@ -81,5 +86,6 @@
 </div>
 
 
-    
+<script src="{% static 'js/main.js' %}"></script>
+
 {% endblock content %}

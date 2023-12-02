@@ -68,15 +68,11 @@ def update_cart(request):
 def cart(request):
     if request.method == "GET":
         
-        da = Cart.objects.all()
+        data = Cart.objects.all()
         
         context = {
-        "data" : [1,2,3,4,5,6,7,8,9,10],
-        "f_name": "Prajwal",
-        "l_name":"Bhandari",
-        "email" : "prajwalbh25@gmail.com",
-        "address":"Banbatika",
-        "phone" : "9841615431" ,
+        'request': request,
+        'data' : data,
         }
         
         return render(request, "cart.html", context=context)
