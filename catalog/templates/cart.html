@@ -42,13 +42,13 @@
                             <button type="button" class="bg-blue-800 text-white">like</button>
                             <button class="bg-blue-800 text-white">del</button>
                         </div>
-                        <div class="justify-end px-5 flex">
-                            <button id = "quantity_sub" > - </button>
+                        <div class="justify-end px-5 flex snap-center">
+                            <button class = "px-2 " id = "quantity_subt" > - </button>
                             <p id = "quantity"> 
 
                                 {{i.quantity}}
                             </p>
-                            <button id = "quantity_add" > + </button>
+                            <button class = "px-2" id = "quantity_adde" > + </button>
         
                         </div>
         
@@ -86,6 +86,6 @@
 </div>
 
 
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/cart.js' %}"></script>
 
 {% endblock content %}
