@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-
+from seller.models import SellerAccount
 # Create your models here.
 
 class Product(models.Model):
@@ -11,6 +11,7 @@ class Product(models.Model):
     review = models.FloatField()
     quantity = models.IntegerField()
     slug = models.SlugField()
+    seller = models.ForeignKey(SellerAccount, on_delete=models.CASCADE)
     
     def save(self, *args, **kwargs):
         if not self.slug:
