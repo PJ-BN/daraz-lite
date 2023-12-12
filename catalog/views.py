@@ -53,15 +53,15 @@ def profile(request):
     
 def update_cart(request):
     data = json.loads(request.body.decode('utf-8'))
-    name = data.get('key1')
-    price = data.get('key2')
-    image = data.get('key3')
-    quantity = data.get('key4')
-    description = data.get('key5')
+    
+    quantity = data.get('key1')
+    id = data.get('key2')
+    
+    
     try:
-        a = Cart.objects.get(name = name)
+        a = Cart.objects.get()
     except:
-        ca = Cart(name = name , description = description, price = price , image = image, quantity = quantity , slug = name)
+        ca = Cart(id = id , quantity = quantity)
         ca.save()
         print("success")
         

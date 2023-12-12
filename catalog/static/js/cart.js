@@ -24,3 +24,26 @@ document.getElementById("quantity_adde").addEventListener("click", function() {
 document.getElementById("quantity_subt").addEventListener("click", function() {
     quantityChange(0)
 })
+
+console.log(page_checkbox)
+console.log(product_checkbox)
+
+
+let ab = []
+let cd = []
+
+for (let i = 0; i < page_checkbox.length; i++) {
+
+    ab.push(document.getElementById(page_checkbox[i]))
+    ab[i].addEventListener('change', function() {
+        cd.push(document.getElementById(product_checkbox[i]))
+        if (ab[i].checked) {
+            console.log("done");
+            cd[i].checked = true
+
+        } else {
+            cd[i].checked = false
+
+        }
+    })
+}

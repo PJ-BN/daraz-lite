@@ -8,11 +8,10 @@ function cart() {
             },
             body: JSON.stringify({
                 // Add any data you want to send in the request body
-                key1: name,
-                key2: price,
-                key3: image12,
-                key4: quantity,
-                key5: description,
+
+                key1: quantity,
+                key2: data
+
                 // ...
             })
         })
