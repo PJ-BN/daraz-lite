@@ -18,31 +18,31 @@
     <div name = "purchases" class= "justify-right   ">
         {% if data%}
             {% for i in data %}
-            <p> {{i.id}} </p>
+            {% comment %} <p> {{i.id}} </p> {% endcomment %}
             <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
 
                 <div class="bg-white p-3 ">
                     <div class="pb-2 text-xl">
                         <input type="checkbox" name="" id="page_checkbox{{i.id}}">
-                        <span> {{i.name}} </span>
+                        <span> {{ i.id.name }}  </span>
                     </div>
 
                     <div class="flex justify-between pt-2 ">
                         <div class="justify-start flex">
                             <div class="pr-2">
-                                <input type="checkbox" name="" id="product_checkbox{{i.id}}">
+                                <input type="checkbox" name="" id="product_checkbox{{i.id.id}}">
                             </div>
                             <div class="pr-2">
-                                <img src="images/{{ i.image}}" class="w-16" alt="image">
+                                <img src="images/{{ i.id.image}}" class="w-16" alt="image">
                             </div>
                             <div>
-                                <span class="text-lg"> {{i.name}} </span>
+                                <span class="text-lg"> {{i.id.name}} </span>
                                 <br>
-                                <span> {{i.description}} </span>
+                                <span> {{i.id.description}} </span>
                             </div>
                         </div>
                         <div class="justify-center px-12">
-                            <span class="text-lg">Rs. {{i.price}} </span>
+                            <span class="text-lg">Rs. {{i.id.price}} </span>
                             <br>
                             <button type="button" class="bg-blue-800 text-white">like</button>
                             <button class="bg-blue-800 text-white">del</button>

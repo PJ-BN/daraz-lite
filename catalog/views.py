@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import JsonResponse
 import os
 import json
-from  seller.models import Products as Product
+from  seller.models import *
 from .models import *
 from login.models import Loginid
 
@@ -14,12 +14,17 @@ def home(request):
     if request.method == "POST":
         print("done")
         
-    data = Product.objects.all()
+    product_data = Products.objects.all()
+    seller_data = SellerAccount.objects.all()
+    
+    for product in product_data:
+        print(f"{product.email.name}")
            
   
     
     context = {
-        "data": data
+        "data": product_data,
+        'sellers': seller_data
     }
     return render(request, 'home.html', context)
 
@@ -85,9 +90,9 @@ def cart(request):
         
  
 def product(request, slug):
-    identify_slug = get_object_or_404(Product, slug = slug)
+    identify_slug = get_object_or_404(Products, slug = slug)
     
-    data = Product.objects.get(slug= slug)
+    data = Products.objects.get(slug= slug)
     context = {
         'request': request,
         'post' : identify_slug,

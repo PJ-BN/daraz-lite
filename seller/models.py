@@ -19,7 +19,7 @@ class Products(models.Model):
     review = models.FloatField()
     quantity = models.IntegerField()
     slug = models.SlugField()
-    seller = models.ForeignKey(SellerAccount, on_delete=models.CASCADE)
+    email = models.ForeignKey(SellerAccount, on_delete=models.CASCADE)
     
     def save(self, *args, **kwargs):
         if not self.slug:
