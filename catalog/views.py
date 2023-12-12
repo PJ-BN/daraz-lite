@@ -3,6 +3,7 @@ from django.conf import settings
 from django.http import JsonResponse
 import os
 import json
+from  seller.models import Products as Product
 from .models import *
 from login.models import Loginid
 

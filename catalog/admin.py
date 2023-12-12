@@ -9,5 +9,5 @@ class ProductDisplay(admin.ModelAdmin):
 class CartDisplay(admin.ModelAdmin):
     list_display= ("name", "price",  "quantity")
     
-admin.site.register(Product, ProductDisplay)
+# admin.site.register(Product, ProductDisplay)
 admin.site.register(Cart, CartDisplay)
