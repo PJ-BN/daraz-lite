@@ -4,7 +4,7 @@ from seller.models import *
 
 
 class Cart(models.Model):
-    id = models.ForeignKey(Products, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(Products, on_delete=models.CASCADE, primary_key=True)
     # name = models.CharField(max_length=200)
     # description = models.TextField()
     # price = models.CharField(max_length=200)

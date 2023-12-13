@@ -55,7 +55,8 @@ def update_cart(request):
     data = json.loads(request.body.decode('utf-8'))
     
     quantity = data.get('key1')
-    id = data.get('key2')
+    id = data.get('key2').strip('"')
+    print(id)
     
     
     try:
