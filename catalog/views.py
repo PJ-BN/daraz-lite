@@ -55,14 +55,14 @@ def update_cart(request):
     data = json.loads(request.body.decode('utf-8'))
     
     quantity = data.get('key1')
-    id = data.get('key2').strip('"')
+    id = data.get('key2')
     print(id)
     
     
     try:
         a = Cart.objects.get()
     except:
-        ca = Cart(id = id , quantity = quantity)
+        ca = Cart(id = Products.objects.get(id = id) , quantity = quantity)
         ca.save()
         print("success")
         
@@ -76,10 +76,13 @@ def cart(request):
     if request.method == "GET":
         
         data = Cart.objects.all()
+        selle = set([i.id.email.name for i in data ])
+        
         
         context = {
         'request': request,
         'data' : data,
+        'seller': selle
         }
         
         return render(request, "cart.html", context=context)

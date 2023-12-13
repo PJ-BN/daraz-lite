@@ -17,17 +17,22 @@
     </script>
     <div name = "purchases" class= "justify-right   ">
         {% if data%}
-            {% for i in data %}
-            {% comment %} <p> {{i.id}} </p> {% endcomment %}
-            <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
+        {% for a in seller %}
+        {% comment %} <p> {{i.id}} </p> {% endcomment %}
+        <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
+            
+            <div class="bg-white p-3 ">
+                <div class="pb-2 text-xl">
+                    <input type="checkbox" name="" id="page_checkbox_{{a}}">
+                    <span> {{ a }}  </span>
+                </div>
+                <hr>
+                <br>
+                
+                {% for i in data %}
 
-                <div class="bg-white p-3 ">
-                    <div class="pb-2 text-xl">
-                        <input type="checkbox" name="" id="page_checkbox{{i.id}}">
-                        <span> {{ i.id.email.name }}  </span>
-                    </div>
-
-                    <div class="flex justify-between pt-2 ">
+                {% if i.id.email.name == a %}
+                    <div class="flex justify-between pt-2 bg-gray-50">
                         <div class="justify-start flex">
                             <div class="pr-2">
                                 <input type="checkbox" name="" id="product_checkbox{{i.id.id}}">
@@ -58,20 +63,27 @@
                         </div>
         
                     </div>
+                    <br>
                     
+                    {% endif %}
+                    <script>
+                        if( ! product_checkbox.includes("product_checkbox{{i.id.id}}"))
+                        {
+                            product_checkbox.push("product_checkbox{{i.id.id}}")
+
+                        }
+                        if(! page_checkbox.includes("page_checkbox_{{a}}"))
+                        page_checkbox.push("page_checkbox_{{a}}")
+        
+        
+                    </script>
+                {% endfor %}
                 </div>
                 
                 
             </div>
-            <script>
-                
-                product_checkbox.push("product_checkbox{{i.id}}")
-                page_checkbox.push("page_checkbox{{i.id}}")
-
-
-            </script>
             
-            {% endfor %}
+        {% endfor %}
         {% endif %}
     </div>
     

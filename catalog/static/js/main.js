@@ -1,6 +1,6 @@
 function cart() {
-    console.log(data)
     console.log(quantity)
+
     alert(" Added to the cart")
 
     fetch(myViewUrl, {

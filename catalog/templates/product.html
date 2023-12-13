@@ -162,8 +162,8 @@
 
 <script>
     
-    var quantity = 1
-    var data = "{{data}}"
+    var quantity = parseInt(document.getElementById("quantity").textContent)
+    var data = "{{data.id}}"
     const myViewUrl = "{% url 'update_cart'  %}";
     const csrfToken = "{{ csrf_token }}"
 </script>
