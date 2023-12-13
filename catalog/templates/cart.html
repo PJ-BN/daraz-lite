@@ -12,12 +12,17 @@
 
 <div class = "flex justify-center px-20 py-5 bg-gray-200 text-gray-500 r">
     <script>
-        product_checkbox = []
+        {% comment %} product_checkbox = [] {% endcomment %}
         page_checkbox = []
+        page = {}
     </script>
     <div name = "purchases" class= "justify-right   ">
         {% if data%}
         {% for a in seller %}
+        <script>
+            productt = []
+            
+        </script>
         {% comment %} <p> {{i.id}} </p> {% endcomment %}
         <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
             
@@ -65,23 +70,33 @@
                     </div>
                     <br>
                     
-                    {% endif %}
                     <script>
-                        if( ! product_checkbox.includes("product_checkbox{{i.id.id}}"))
+                        {% comment %} if( ! product_checkbox.includes("product_checkbox{{i.id.id}}"))
                         {
                             product_checkbox.push("product_checkbox{{i.id.id}}")
 
-                        }
+                        } {% endcomment %}
                         if(! page_checkbox.includes("page_checkbox_{{a}}"))
-                        page_checkbox.push("page_checkbox_{{a}}")
-        
+                        {
+
+                            page_checkbox.push("page_checkbox_{{a}}")
+                        }
+
+                        productt.push("product_checkbox{{i.id.id}}")
         
                     </script>
+                    {% endif %}
                 {% endfor %}
                 </div>
                 
                 
             </div>
+            <script>
+                if(productt)
+                {
+                    page["{{a}}"] =productt
+                }
+            </script>
             
         {% endfor %}
         {% endif %}
