@@ -116,7 +116,10 @@ def update_data(request):
     new_quantity = data.get('new_quantity')  # Assuming you send the new name
 
     try:
-        instance = Cart.objects.get(id=instance_name)
+        # instance = Cart.objects.get(id=instance_name)
+        instance_all = Cart.objects.all()
+        a = [i.id.id for i in instance_all if i.id.name == instance_name]
+        instance = Cart.objects.get(id = a[0])
         instance.quantity = new_quantity
         instance.save()
         return JsonResponse({'success': True})

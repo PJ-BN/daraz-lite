@@ -1,14 +1,19 @@
+function main() {
+    checkkbox()
+    quantities()
+
+}
+
+main()
+
 function quantityChange(check, names, i) {
     var data = document.getElementById("quantity_" + names[i]);
     x = parseInt(data.textContent)
-    console.log(x)
 
     if (x > 0) {
 
         if (check == 1) {
             x += 1
-                // console.log(names)
-                // console.log(i)
 
         }
 
@@ -17,12 +22,11 @@ function quantityChange(check, names, i) {
 
         if (check == 0) {
             x -= 1
-                // console.log("sub" + names)
 
         }
     }
-    console.log(x)
     data.textContent = x
+    updateQuantity(x, names[i])
 }
 
 function checkkbox() {
@@ -44,10 +48,8 @@ function cartvalue(pg, key) {
     pg.addEventListener("change", function() {
 
         if (pg.checked) {
-            console.log("done");
             var val = true
         } else if (!pg.checked) {
-            console.log("false")
             var val = false
         }
         productcheckbox(key, val)
@@ -64,17 +66,18 @@ function productcheckbox(key, val) {
 }
 
 
-checkkbox()
-    // console.log(addd, subt)
-console.log(names)
-for (let i = 0; i < names.length; i++) {
-    document.getElementById("quantity_add_" + names[i]).addEventListener("click", function() {
-        quantityChange(1, names, i)
-    })
-    document.getElementById("quantity_sub_" + names[i]).addEventListener("click", function() {
-        quantityChange(0, names, i)
-    })
 
+function quantities() {
+
+    for (let i = 0; i < names.length; i++) {
+        document.getElementById("quantity_add_" + names[i]).addEventListener("click", function() {
+            quantityChange(1, names, i)
+        })
+        document.getElementById("quantity_sub_" + names[i]).addEventListener("click", function() {
+            quantityChange(0, names, i)
+        })
+
+    }
 }
 
 
@@ -89,34 +92,18 @@ function updateQuantity(quantity, name) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie(csrftoken)
+                'X-CSRFToken': csrfToken
             },
             body: JSON.stringify(updatedData)
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                console.log('Update successful');
-            } else {
+            if (!data.success) {
                 console.error('Update failed:', data.error);
             }
         })
         .catch(error => console.error('Error:', error));
 
-    // Function to get CSRF token from cookies
-    function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
+
 
 }
