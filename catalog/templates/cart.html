@@ -12,10 +12,12 @@
 
 <div class = "flex justify-center px-20 py-5 bg-gray-200 text-gray-500 r">
     <script>
-        {% comment %} product_checkbox = [] {% endcomment %}
+        price = "price_"
+        quant = "quantity_"
+        checkboxx = "product_checkbox"
         page_checkbox = []
         page = {}
-        names = []
+        id = []
         const csrfToken = "{{ csrf_token }}"
     </script>
     <div name = "purchases" class= "justify-right   ">
@@ -24,9 +26,8 @@
         <script>
             productt = []
             
-            
         </script>
-        {% comment %} <p> {{i.id}} </p> {% endcomment %}
+
         <div class="justify-start text-sm text-gray mt-5 mb-5 pl-5 ">
             
             <div class="bg-white p-3 ">
@@ -55,18 +56,20 @@
                             </div>
                         </div>
                         <div class="justify-center px-12">
-                            <span class="text-lg">Rs. {{i.id.price}} </span>
+                            <span class="text-lg">Rs. 
+                                <span id = "price_{{i.id.id}}">{{i.id.price}}</span> 
+                            </span>
                             <br>
                             <button type="button" class="bg-blue-800 text-white">like</button>
                             <button class="bg-blue-800 text-white">del</button>
                         </div>
                         <div class="justify-end px-5 flex snap-center">
-                            <button class = "px-2 " id = "quantity_sub_{{i.id.name}}" > - </button>
-                            <p id = "quantity_{{i.id.name}}"> 
+                            <button class = "px-2 " id = "quantity_sub_{{i.id.id}}" > - </button>
+                            <p id = "quantity_{{i.id.id}}"> 
 
                                 {{i.quantity}}
                             </p>
-                            <button class = "px-2" id = "quantity_add_{{i.id.name}}" > + </button>
+                            <button class = "px-2" id = "quantity_add_{{i.id.id}}" > + </button>
         
                         </div>
         
@@ -86,8 +89,8 @@
                         }
 
                         productt.push("product_checkbox{{i.id.id}}")
-                        names.push("{{i.id.name}}")
-                        {% comment %} subt.push("quantity_sub_{{i.id.name}}") {% endcomment %}
+                        id.push("{{i.id.id}}")
+                        {% comment %} subt.push("quantity_sub_{{i.id.id}}") {% endcomment %}
         
                     </script>
                     {% endif %}
@@ -113,17 +116,22 @@
             <h4 class = "text-lg text-black">Order Summary</h4>
             
             <div class= "flex justify-between  ">
-                <p class = " justify-start text-sm "> Subtotal</p>
-                <p class = "justify-end text-sm"> Rs. 0</p>
+                <p class = " justify-start text-sm " > Subtotal</p>
+                <p class = "justify-end text-sm"> Rs. 
+                    <span id = "subtotal">0</span>
+                </p>
                 
             </div>
             <div>
                 <input class = "rounded-sm text-sm mt-1 mb-1 " type = "text" name = "voucher" placeholder = "Enter Voucher Code">
                 <button class= "bg-blue-500 rounded-sm p-1 pl-3 pr-3 text-white"> Apply</button>
             </div>
+            
             <div class= "flex justify-between  ">
                 <p class = " justify-start text-sm "> Total</p>
-                <p class = "justify-end text-sm"> Rs. 0</p>
+                <p class = "justify-end text-sm"> Rs. 
+                    <span id = "total">0</span>
+                    </p>
             </div>
             <button class="m-1 p-1 pl-10 pr-10 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 focus:outline-none focus:ring focus:ring-violet-300 text-center text-gray-200"> Proceed to checkout</button>
 

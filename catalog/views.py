@@ -112,14 +112,14 @@ def added_to_cart(request):
 
 def update_data(request):
     data = json.loads(request.body)
-    instance_name = data.get('names')  # Assuming you send the ID of the instance to update
+    id = data.get('names')  # Assuming you send the ID of the instance to update
     new_quantity = data.get('new_quantity')  # Assuming you send the new name
 
     try:
         # instance = Cart.objects.get(id=instance_name)
-        instance_all = Cart.objects.all()
-        a = [i.id.id for i in instance_all if i.id.name == instance_name]
-        instance = Cart.objects.get(id = a[0])
+        # instance_all = Cart.objects.all()
+        # a = [i.id.id for i in instance_all if i.id.name == instance_name]
+        instance = Cart.objects.get(id = id)
         instance.quantity = new_quantity
         instance.save()
         return JsonResponse({'success': True})

@@ -6,8 +6,8 @@ function main() {
 
 main()
 
-function quantityChange(check, names, i) {
-    var data = document.getElementById("quantity_" + names[i]);
+function quantityChange(check, id, i) {
+    var data = document.getElementById("quantity_" + id[i]);
     x = parseInt(data.textContent)
 
     if (x > 0) {
@@ -26,7 +26,7 @@ function quantityChange(check, names, i) {
         }
     }
     data.textContent = x
-    updateQuantity(x, names[i])
+    updateQuantity(x, id[i])
 }
 
 function checkkbox() {
@@ -69,12 +69,12 @@ function productcheckbox(key, val) {
 
 function quantities() {
 
-    for (let i = 0; i < names.length; i++) {
-        document.getElementById("quantity_add_" + names[i]).addEventListener("click", function() {
-            quantityChange(1, names, i)
+    for (let i = 0; i < id.length; i++) {
+        document.getElementById("quantity_add_" + id[i]).addEventListener("click", function() {
+            quantityChange(1, id, i)
         })
-        document.getElementById("quantity_sub_" + names[i]).addEventListener("click", function() {
-            quantityChange(0, names, i)
+        document.getElementById("quantity_sub_" + id[i]).addEventListener("click", function() {
+            quantityChange(0, id, i)
         })
 
     }
@@ -104,6 +104,38 @@ function updateQuantity(quantity, name) {
         })
         .catch(error => console.error('Error:', error));
 
+}
+
+subtotal = document.getElementById("subtotal")
+total = document.getElementById("total")
+
+
+abc = []
+for (i = 0; i < id.length; i++) {
+    abc.push(document.getElementById(checkboxx + id[i]))
+    aabb(abc[i], i)
 
 
 }
+console.log(abc)
+
+function aabb(a, i) {
+
+    pp = parseInt(document.getElementById(price + id[i]).textContent)
+    qq = parseInt(document.getElementById(quant + id[i]).textContent)
+    sb = parseInt(subtotal.textContent)
+    console.log(pp, qq, sb)
+    a.addEventListener("change", function() {
+
+        if (a.checked) {
+            subtotal_value = pp * qq
+            console.log(subtotal_value)
+            subtotal.textContent = subtotal_value
+        } else {
+            console.log(i + " is not checked")
+        }
+    })
+
+}
+
+console.log(id)
