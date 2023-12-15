@@ -107,3 +107,18 @@ def product(request, slug):
 def added_to_cart(request):
     if request.method == "POST":
         print('done')
+        
+
+
+def update_data(request):
+    data = json.loads(request.body)
+    instance_name = data.get('names')  # Assuming you send the ID of the instance to update
+    new_quantity = data.get('new_quantity')  # Assuming you send the new name
+
+    try:
+        instance = Cart.objects.get(id=instance_name)
+        instance.quantity = new_quantity
+        instance.save()
+        return JsonResponse({'success': True})
+    except Cart.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Instance not found'})

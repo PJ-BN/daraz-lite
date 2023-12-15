@@ -15,12 +15,15 @@
         {% comment %} product_checkbox = [] {% endcomment %}
         page_checkbox = []
         page = {}
+        names = []
+        const csrfToken = "{{ csrf_token }}"
     </script>
     <div name = "purchases" class= "justify-right   ">
         {% if data%}
         {% for a in seller %}
         <script>
             productt = []
+            
             
         </script>
         {% comment %} <p> {{i.id}} </p> {% endcomment %}
@@ -58,12 +61,12 @@
                             <button class="bg-blue-800 text-white">del</button>
                         </div>
                         <div class="justify-end px-5 flex snap-center">
-                            <button class = "px-2 " id = "quantity_subt" > - </button>
-                            <p id = "quantity"> 
+                            <button class = "px-2 " id = "quantity_sub_{{i.id.name}}" > - </button>
+                            <p id = "quantity_{{i.id.name}}"> 
 
                                 {{i.quantity}}
                             </p>
-                            <button class = "px-2" id = "quantity_adde" > + </button>
+                            <button class = "px-2" id = "quantity_add_{{i.id.name}}" > + </button>
         
                         </div>
         
@@ -83,6 +86,8 @@
                         }
 
                         productt.push("product_checkbox{{i.id.id}}")
+                        names.push("{{i.id.name}}")
+                        {% comment %} subt.push("quantity_sub_{{i.id.name}}") {% endcomment %}
         
                     </script>
                     {% endif %}

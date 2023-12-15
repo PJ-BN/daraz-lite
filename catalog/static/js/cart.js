@@ -1,21 +1,28 @@
-function quantityChange(check) {
-    var x = document.getElementById("quantity");
+function quantityChange(check, names, i) {
+    var data = document.getElementById("quantity_" + names[i]);
+    x = parseInt(data.textContent)
+    console.log(x)
 
-    if (quantity > 0) {
+    if (x > 0) {
 
         if (check == 1) {
-            quantity += 1
+            x += 1
+                // console.log(names)
+                // console.log(i)
+
         }
 
     }
-    if (quantity > 1) {
+    if (x > 1) {
 
         if (check == 0) {
-            quantity -= 1
+            x -= 1
+                // console.log("sub" + names)
+
         }
     }
-
-    x.textContent = quantity
+    console.log(x)
+    data.textContent = x
 }
 
 function checkkbox() {
@@ -56,11 +63,60 @@ function productcheckbox(key, val) {
 
 }
 
-document.getElementById("quantity_adde").addEventListener("click", function() {
-    quantityChange(1)
-})
-document.getElementById("quantity_subt").addEventListener("click", function() {
-    quantityChange(0)
-})
 
 checkkbox()
+    // console.log(addd, subt)
+console.log(names)
+for (let i = 0; i < names.length; i++) {
+    document.getElementById("quantity_add_" + names[i]).addEventListener("click", function() {
+        quantityChange(1, names, i)
+    })
+    document.getElementById("quantity_sub_" + names[i]).addEventListener("click", function() {
+        quantityChange(0, names, i)
+    })
+
+}
+
+
+function updateQuantity(quantity, name) {
+
+    var updatedData = {
+        names: name,
+        new_quantity: quantity
+    };
+
+    fetch('/api/update_data/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie(csrftoken)
+            },
+            body: JSON.stringify(updatedData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Update successful');
+            } else {
+                console.error('Update failed:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+}
