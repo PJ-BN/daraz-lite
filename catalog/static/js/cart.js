@@ -1,4 +1,5 @@
 function main() {
+    summary()
     checkkbox()
     quantities()
 
@@ -53,6 +54,7 @@ function cartvalue(pg, key) {
             var val = false
         }
         productcheckbox(key, val)
+
     })
 }
 
@@ -106,36 +108,86 @@ function updateQuantity(quantity, name) {
 
 }
 
-subtotal = document.getElementById("subtotal")
-total = document.getElementById("total")
+
+function summary() {
 
 
-abc = []
-for (i = 0; i < id.length; i++) {
-    abc.push(document.getElementById(checkboxx + id[i]))
-    aabb(abc[i], i)
+
+    abc = []
+    for (i = 0; i < id.length; i++) {
+        abc.push(document.getElementById(checkboxx + id[i]))
+        checkSummaryCheckbox(abc[i], i)
+        deleteListnear(i)
+
+
+    }
 
 
 }
-console.log(abc)
 
-function aabb(a, i) {
+function checkSummaryCheckbox(a, i) {
 
-    pp = parseInt(document.getElementById(price + id[i]).textContent)
-    qq = parseInt(document.getElementById(quant + id[i]).textContent)
-    sb = parseInt(subtotal.textContent)
-    console.log(pp, qq, sb)
+    subtotal = document.getElementById("subtotal")
+    total = document.getElementById("total")
     a.addEventListener("change", function() {
 
+
         if (a.checked) {
-            subtotal_value = pp * qq
-            console.log(subtotal_value)
-            subtotal.textContent = subtotal_value
-        } else {
-            console.log(i + " is not checked")
+
+            subtotal_price = getSummaryValue(i)
+            subtotal_value.push(subtotal_price)
+
+        } else if (!a.checked) {
+            subtotal_price = getSummaryValue(i)
+
+            subtotal_value = subtotal_value.filter(item => item !== subtotal_price);
         }
+        let sum = subtotal_value.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        subtotal.textContent = sum
+        total.textContent = sum
+
     })
+
 
 }
 
-console.log(id)
+function getSummaryValue(i) {
+    let pp = parseInt(document.getElementById(price + id[i]).textContent)
+    let qq = parseInt(document.getElementById(quant + id[i]).textContent)
+
+    let subtotal_values = pp * qq
+    return subtotal_values
+}
+
+function deleteData(id) {
+    var deletedData = {
+        id: id
+    };
+
+    fetch('/api/delete_data/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(deletedData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                console.error('Update failed:', data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+}
+
+function deleteListnear(i) {
+    del.push(document.getElementById("del_" + id[i]))
+
+    for (i in del) {
+        del[i].addEventListener('click', function() {
+            deleteData(id[i])
+        })
+    }
+}

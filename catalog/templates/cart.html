@@ -18,6 +18,9 @@
         page_checkbox = []
         page = {}
         id = []
+        subtotal_value = []
+        del = []
+
         const csrfToken = "{{ csrf_token }}"
     </script>
     <div name = "purchases" class= "justify-right   ">
@@ -61,7 +64,7 @@
                             </span>
                             <br>
                             <button type="button" class="bg-blue-800 text-white">like</button>
-                            <button class="bg-blue-800 text-white">del</button>
+                            <button  id = "del_{{i.id.id}}" class="bg-blue-800 text-white">del</button>
                         </div>
                         <div class="justify-end px-5 flex snap-center">
                             <button class = "px-2 " id = "quantity_sub_{{i.id.id}}" > - </button>

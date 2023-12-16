@@ -125,3 +125,11 @@ def update_data(request):
         return JsonResponse({'success': True})
     except Cart.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Instance not found'})
+    
+
+def delete_data(request):
+    data = json.loads(request.body)
+    id = data.get('id') 
+    print(f"helloworld {id}")
+    return JsonResponse({'success': True})
+    

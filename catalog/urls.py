@@ -9,7 +9,9 @@ urlpatterns = [
     path('cart', cart, name = "cart"),
     path('cart/update/', update_cart, name = "update_cart"),
     path('<slug:slug>', product, name = "product")   ,
-    path('api/update_data/', update_data, name='update_data'),
+    path('api/update_data/', update_data, name='updates_data'),
+    path('api/delete_data/', delete_data, name='delete_data'),
+    
     
 ]
 
