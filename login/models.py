@@ -4,8 +4,8 @@ from django.db import models
 
 class Loginid(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(primary_key=True)
+    email = models.CharField(primary_key=True)
     address = models.CharField(max_length=100)
-    
+    password = models.CharField(max_length = 100)
     
     

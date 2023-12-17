@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
+
 from seller.models import *
 
 
@@ -10,6 +12,7 @@ class Cart(models.Model):
     # price = models.CharField(max_length=200)
     # image = models.CharField(max_length=200)
     quantity = models.CharField(max_length=200)
+    user = models.CharField(max_length = 200)
     # slug = models.SlugField()
         
     # def save(self, *args, **kwargs):

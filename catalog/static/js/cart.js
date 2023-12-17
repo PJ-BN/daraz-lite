@@ -185,9 +185,8 @@ function deleteData(id) {
 function deleteListnear(i) {
     del.push(document.getElementById("del_" + id[i]))
 
-    for (i in del) {
-        del[i].addEventListener('click', function() {
-            deleteData(id[i])
-        })
-    }
+
+    del[i].addEventListener('click', function() {
+        deleteData(id[i])
+    })
 }

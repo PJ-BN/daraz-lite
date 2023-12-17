@@ -62,7 +62,8 @@ def update_cart(request):
     try:
         a = Cart.objects.get()
     except:
-        ca = Cart(id = Products.objects.get(id = id) , quantity = quantity)
+        user = request.user.username
+        ca = Cart(id = Products.objects.get(id = id) , quantity = quantity, user = user)
         ca.save()
         print("success")
         
@@ -74,6 +75,8 @@ def update_cart(request):
 
 def cart(request):
     if request.method == "GET":
+        user = request.user.username
+        print(user)
         
         data = Cart.objects.all()
         selle = set([i.id.email.name for i in data ])
@@ -130,6 +133,13 @@ def update_data(request):
 def delete_data(request):
     data = json.loads(request.body)
     id = data.get('id') 
-    print(f"helloworld {id}")
-    return JsonResponse({'success': True})
+
+    try:
+        instance = Cart.objects.get(id = id)
+        instance.delete()
+        return JsonResponse({'success': True})
+    
+    except:
+        return JsonResponse({'success': False})
+        
     
