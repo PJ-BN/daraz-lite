@@ -37,7 +37,7 @@ def signup(request):
         last_name = request.POST.get("last_name")
         address = request.POST.get("address")
         name = first_name+ " " + last_name
-        datab = Loginid(email = username, address = address, name= name )
+        datab = Loginid(email = username, address = address, name= name, password = password )
         
         
         user = User.objects.create_user(username=username, password=password , first_name = first_name, last_name = last_name )

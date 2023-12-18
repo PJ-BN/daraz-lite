@@ -31,7 +31,6 @@ def home(request):
 def profile(request):
     if request.method =='GET':
         us = request.user.username
-        print(us)
         
         context = {
         "data" : [1,2,3,4,5,6,7,8,9,10],
@@ -56,16 +55,17 @@ def update_cart(request):
     
     quantity = data.get('key1')
     id = data.get('key2')
-    print(id)
     
     
-    try:
-        a = Cart.objects.get()
-    except:
-        user = request.user.username
-        ca = Cart(id = Products.objects.get(id = id) , quantity = quantity, user = user)
-        ca.save()
-        print("success")
+    
+    user = request.user.username
+    ca = Cart(id = Products.objects.get(id = id) , quantity = quantity, user = user)
+    ca.save()
+    # try:
+    #     a = Cart.objects.get()
+    #     print("success")
+    # except:
+    #     print("un-success")
         
     
 
@@ -76,9 +76,8 @@ def update_cart(request):
 def cart(request):
     if request.method == "GET":
         user = request.user.username
-        print(user)
         
-        data = Cart.objects.all()
+        data = Cart.objects.filter(user = user)
         selle = set([i.id.email.name for i in data ])
         
         
