@@ -46,9 +46,25 @@ def profile(request):
         
             }
         return render(request, 'profile.html', context)
-    elif request.method =="POST":
-        print("done")
     
+        
+   
+def search(request):
+    if request.method == "POST":
+        
+        search = request.POST.get("search") 
+        print(search)
+        
+        product_data = Products.objects.filter(name= search.capitalize())
+        context = {
+            "data": product_data
+        }
+        # return JsonResponse({'success' :'sucess'})
+        return render(request, 'home.html', context)
+    
+    
+    
+        
     
 def update_cart(request):
     data = json.loads(request.body.decode('utf-8'))

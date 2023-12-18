@@ -10,37 +10,6 @@
     Home
 {% endblock %}
 
-{% comment %} {% block navprofile %}
-{% if username == "" %}
-
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> Profile</a></li>
-
-{% else%}
-
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'profile' %}"> profile</a></li>
-
-{% endif %}
-{% endblock %} 
-
-{% block navsign %}
-
-{% if username == "" %}
-
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'login' %}"> signin</a></li>
-
-{% else%}
-
-<li class= "mx-2 cursor-pointer"><a href = "{% url 'logout' %}"> Logout</a></li>
-
-{% endif%}
-
-{% endblock %}  {% endcomment %}
-
-
-
-
-
-
 {% block content %}
 
 <div class="bg-gray-300 grid justify-center">
@@ -75,6 +44,9 @@
                 
         
                 {% endfor %}
+
+                {% else %}
+                <p> No result found</p>
                 
                 {% endif %}
             </div>

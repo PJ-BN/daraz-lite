@@ -13,7 +13,8 @@ function cart() {
                 // Add any data you want to send in the request body
 
                 key1: quantity,
-                key2: data
+                key2: data,
+
 
                 // ...
             })

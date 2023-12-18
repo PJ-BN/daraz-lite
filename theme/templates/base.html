@@ -18,8 +18,12 @@
                 <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="logo" class="w h-6 rounded-full cursor-pointer">
             </div>
             <div  class= "mx-2 cursor-pointer justify-center">
+                <form method = "POST" action = "{% url 'search' %}">
+                {% csrf_token %}
+
                 <input type="text" name = "search" class="border-2 border-white ">
                 <button class = "px-4 rounded-full text-white hover:bg-white-800 hover:text-black">Search</button>
+                </form>
 
             </div>
             <ul class="flex justify-end  text-white" >
