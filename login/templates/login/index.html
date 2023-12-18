@@ -24,15 +24,16 @@
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 
-			<div class="signup">
+			<div class="signup text-justify text-white">
 				
 				<form method = "POST" action = "{% url 'login' %}">
 					{% csrf_token %}
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="text" id = "email" name="email" placeholder="Username" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
+					<p class = "text-white">{{data}}</p>
 					<button>Login</button>
-					<p><a href="{% url 'signup' %}">Not a member? . Register</a></p>
+					<p  ><a class = "text-white" href="{% url 'signup' %}">Not a member? . Register</a></p>
 				</form>
 			</div> 
 
