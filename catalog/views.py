@@ -5,7 +5,8 @@ import os
 import json
 from  seller.models import *
 from .models import *
-from login.models import Loginid
+# from login.models import Loginid
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -31,14 +32,11 @@ def home(request):
 def profile(request):
     if request.method =='GET':
         us = request.user.username
+        # data = Loginid.objects.get(name = us)
         
         context = {
-        "data" : [1,2,3,4,5,6,7,8,9,10],
-        "f_name": "Prajwal",
-        "l_name":"Bhandari",
-        "email" : "prajwalbh25@gmail.com",
-        "address":"Banbatika",
-        "phone" : "9841615431",
+        # "data" : data,
+        
         "order": ["1234"], 
         "time":["01/01/2000"],
         "items": ["a.png"],

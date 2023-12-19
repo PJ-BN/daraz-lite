@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import *
+# from .models import *
 from catalog.views import home
 from django.http import HttpResponse 
 from django.contrib.auth.models import User
@@ -35,11 +35,11 @@ def signup(request):
         email  = request.POST.get("email")
         
         user = User.objects.create_user(username=username, password=password , first_name = first_name, last_name = last_name, email= email )
-        log_user = Loginid(id = user , address = address)
+        # log_user = Loginid(name = user , address = address)
         if user is not None:
             
             user.save()
-            log_user.save()
+            # log_user.save()
             us = authenticate(request, username= username, password=password)
             auth_login(request, us)
         
