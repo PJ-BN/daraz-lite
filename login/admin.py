@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 
 class Logindisplay(admin.ModelAdmin):
-    list_display = (  "name", "email", "address", "password")
+    list_display = (  "id", "address")
 
 admin.site.register(Loginid, Logindisplay)
 

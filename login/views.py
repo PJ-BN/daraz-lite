@@ -35,9 +35,11 @@ def signup(request):
         email  = request.POST.get("email")
         
         user = User.objects.create_user(username=username, password=password , first_name = first_name, last_name = last_name, email= email )
-        
+        log_user = Loginid(id = user , address = address)
         if user is not None:
+            
             user.save()
+            log_user.save()
             us = authenticate(request, username= username, password=password)
             auth_login(request, us)
         
