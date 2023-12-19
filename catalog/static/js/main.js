@@ -59,3 +59,7 @@ document.getElementById("quantity_add").addEventListener("click", function() {
 document.getElementById("quantity_sub").addEventListener("click", function() {
     quantityChange(0)
 })
+
+document.getElementById("buy_now").addEventListener("click", function() {
+    alert("order successfull")
+})
