@@ -5,7 +5,7 @@ import os
 import json
 from  seller.models import *
 from .models import *
-# from login.models import Loginid
+from login.models import Loginids
 from django.contrib.auth.models import User
 
 
@@ -32,10 +32,12 @@ def home(request):
 def profile(request):
     if request.method =='GET':
         us = request.user.username
-        # data = Loginid.objects.get(name = us)
+        id = User.objects.get(username= us)
+        
+        data = Loginids.objects.get(id_id = id.id)
         
         context = {
-        # "data" : data,
+        'data' : data,
         
         "order": ["1234"], 
         "time":["01/01/2000"],
@@ -73,13 +75,10 @@ def update_cart(request):
     
     
     user = request.user.username
-    ca = Cart(id = Products.objects.get(id = id) , quantity = quantity, user = user)
-    ca.save()
-    # try:
-    #     a = Cart.objects.get()
-    #     print("success")
-    # except:
-    #     print("un-success")
+    if user:
+        ca = Cart(id = Products.objects.get(id = id) , quantity = quantity, user = user)
+        ca.save()
+    
         
     
 
