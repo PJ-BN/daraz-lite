@@ -30,8 +30,8 @@ function buy(prices) {
     })
 
 
-    console.log(prices)
-    window.location.href = "/buy"
+    console.log(check_price)
+        // window.location.href = "/buy"
 
 
 }
@@ -165,11 +165,15 @@ function checkSummaryCheckbox(a, i) {
 
             subtotal_price = getSummaryValue(i)
             subtotal_value.push(subtotal_price)
+                // check_price.push(suprice)
+
 
         } else if (!a.checked) {
             subtotal_price = getSummaryValue(i)
 
             subtotal_value = subtotal_value.filter(item => item !== subtotal_price);
+            // check_price = check_price.filter(item => item !== subtotal_price);
+
         }
         let sum = subtotal_value.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
         subtotal.textContent = sum
@@ -185,7 +189,8 @@ function getSummaryValue(i) {
     let qq = parseInt(document.getElementById(quant + id[i]).textContent)
 
     let subtotal_values = pp * qq
-    return subtotal_values
+
+    return subtotal_values, pp
 }
 
 function deleteData(id) {
