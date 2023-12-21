@@ -8,6 +8,7 @@ urlpatterns = [
     path('profile', profile, name = "profile"),
     path('search', search, name = "search"),
     path('cart', cart, name = "cart"),
+    path('buy', buy_now, name = "buy_now"),
     path('cart/update/', update_cart, name = "update_cart"),
     path('<slug:slug>', product, name = "product")   ,
     path('api/update_data/', update_data, name='updates_data'),

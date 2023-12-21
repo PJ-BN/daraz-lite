@@ -2,10 +2,39 @@ function main() {
     summary()
     checkkbox()
     quantities()
+    document.getElementById("proceed").addEventListener("click", function() {
+        p = document.getElementById("total").textContent
+        buy(parseInt(p))
+    })
+
 
 }
 
 main()
+
+function buy(prices) {
+    fetch("buy", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken // Include CSRF token for security
+        },
+        body: JSON.stringify({
+            // Add any data you want to send in the request body
+
+            key1: prices,
+
+
+            // ...
+        })
+    })
+
+
+    console.log(prices)
+    window.location.href = "/buy"
+
+
+}
 
 function quantityChange(check, id, i) {
     var data = document.getElementById("quantity_" + id[i]);

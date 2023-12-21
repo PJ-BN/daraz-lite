@@ -155,3 +155,11 @@ def delete_data(request):
         return JsonResponse({'success': False})
         
     
+def buy_now(request):
+    if request.body:
+        data = json.loads(request.body.decode('utf-8'))
+        
+        price = data.get("key1")
+        print(price)
+    return render(request, "buynow.html")
+    
