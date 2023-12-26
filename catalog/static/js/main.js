@@ -34,50 +34,26 @@ function cart() {
 function buy(prices) {
     console.log(price)
     fetch("buy", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken // Include CSRF token for security
-            },
-            body: JSON.stringify({
-                // Add any data you want to send in the request body
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken // Include CSRF token for security
+        },
+        body: JSON.stringify({
+            // Add any data you want to send in the request body
 
-                key1: prices,
+            key1: prices,
 
 
-                // ...
-            })
+            // ...
         })
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log('Success:', data);
-        //     // Handle the response as needed
-        // })
-        // .catch((error) => {
-        //     console.error('Error:', error);
-        // });
+    })
 
     window.location.href = "/buy"
 
 
 }
 
-// $(document).ready(function() {
-//     $('#buy_now').on('click', function() {
-//         // $.ajax({
-//         //     url: '/buy',
-//         //     type: 'GET',
-//         //     success: function(response) {
-//         //         console.log(response.message);
-//         //         // Handle the response as needed
-//         //     },
-//         //     error: function(error) {
-//         //         console.error('Error:', error);
-//         //     }
-//         // });
-//         window.location.href = "/buy"
-//     });
-// });
 
 
 

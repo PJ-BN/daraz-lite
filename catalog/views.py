@@ -159,7 +159,14 @@ def buy_now(request):
     if request.body:
         data = json.loads(request.body.decode('utf-8'))
         
+        
         price = data.get("key1")
-        print(price)
+        if data.get("key2"):
+            price_product = data.get("key2")
+            for id in price_product:
+                instance = Cart.objects.get(id = id)
+                print(instance)
+                instance.delete()
+        
     return render(request, "buynow.html")
     

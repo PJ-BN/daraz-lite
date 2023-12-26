@@ -23,6 +23,7 @@ function buy(prices) {
             // Add any data you want to send in the request body
 
             key1: prices,
+            key2: check_price,
 
 
             // ...
@@ -31,7 +32,7 @@ function buy(prices) {
 
 
     console.log(check_price)
-        // window.location.href = "/buy"
+    window.location.href = "/buy"
 
 
 }
@@ -163,16 +164,16 @@ function checkSummaryCheckbox(a, i) {
 
         if (a.checked) {
 
-            subtotal_price = getSummaryValue(i)
-            subtotal_value.push(subtotal_price)
-                // check_price.push(suprice)
+            let { product_price, product_subtotal } = getSummaryValue(i);
+            subtotal_value.push(product_subtotal)
+            check_price.push(product_price)
 
 
         } else if (!a.checked) {
-            subtotal_price = getSummaryValue(i)
+            let { product_price, product_subtotal } = getSummaryValue(i);
 
-            subtotal_value = subtotal_value.filter(item => item !== subtotal_price);
-            // check_price = check_price.filter(item => item !== subtotal_price);
+            subtotal_value = subtotal_value.filter(item => item !== product_subtotal);
+            check_price = check_price.filter(item => item !== product_price);
 
         }
         let sum = subtotal_value.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
@@ -187,10 +188,12 @@ function checkSummaryCheckbox(a, i) {
 function getSummaryValue(i) {
     let pp = parseInt(document.getElementById(price + id[i]).textContent)
     let qq = parseInt(document.getElementById(quant + id[i]).textContent)
+    let id_ca = id[i]
 
     let subtotal_values = pp * qq
 
-    return subtotal_values, pp
+    // return subtotal_values
+    return { product_price: id_ca, product_subtotal: subtotal_values }
 }
 
 function deleteData(id) {

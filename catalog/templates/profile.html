@@ -5,28 +5,28 @@
 {% endblock %}
 
 {% block content %}
-<div class ="bg-gray-300 p-2 ">
+<div class ="bg-gray-300 p-2 h-[30rem] justify-between ">
     <div class= "flex text-xl justify-center p-4 font-bold"> Manage my Account</div>
+    {% if data %}
 
     <div class="flex justify-center">
         <div name = "personalprofile" class="bg-white p-5 m-5 text-sm">
-            <h3 class= "text-lg ">Personal Profile</h3>
+            <h3 class= "text-lg ">Personal Profile </h3>
 
-            <span> {{ f_name }} {{ l_name}}</span><br>
-            <span> {{ email }} </span>
+            <span> {{ data.id.first_name }} {{ data.id.last_name }}</span><br>
+            <span> {{ data.id.email }} </span>
 
         </div>
 
         <div name = "Address" class ="bg-white p-5 m-5 text-sm">
             <h3 class="text-lg">Address Book</h3>
             <b>{{f_name}}</b><br>
-            <span>{{ address}}</span>
-            <span>{{ phone }}</span>
+            <span>{{ data.address}}</span>
 
         </div>
     </div>
 
-    <div name ="recent-order" class="m-2 ml-20 mr-20 p-3 pl-10 pr-10 bg-white">
+    {% comment %} <div name ="recent-order" class="m-2 ml-20 mr-20 p-3 pl-10 pr-10 bg-white">
         <div>Recent Orders</div>
         <div class="flex justify-between mt-2">
             <div>order</div>
@@ -50,6 +50,10 @@
             </div>
         </div>
     
-    </div>
+    </div> {% endcomment %}
+
+    {% else %}
+    <p> please login first</p>
+    {% endif %}
 </div>
 {% endblock content %}
