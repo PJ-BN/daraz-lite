@@ -6,6 +6,11 @@ from .models import *
 
 class Logindisplay(admin.ModelAdmin):
     list_display = (  "id", "address")
+    
+class Sellerdisplay(admin.ModelAdmin):
+    list_display = (  "id", "address")
 
 admin.site.register(Loginids, Logindisplay)
+admin.site.register(Sellerids, Sellerdisplay)
+
 

@@ -3,8 +3,7 @@ from .models import *
 from catalog.views import home
 from django.http import HttpResponse 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import authenticate, login, logout, auth_login
 
 from django.contrib import messages
 
@@ -35,15 +34,22 @@ def signup(request):
         email  = request.POST.get("email")
         
         user = User.objects.create_user(username=username, password=password , first_name = first_name, last_name = last_name, email= email )
-        log_user = Loginids(id = user , address = address)
+        
+        path = request.path
         if user is not None:
             
             user.save()
-            log_user.save()
+            if path == "member/signup":
+                log_user = Loginids(id = user , address = address)  
+                log_user.save()
+            else:
+                log_user = Sellerids(id = user , address = address)  
+                log_user.save()
             us = authenticate(request, username= username, password=password)
             auth_login(request, us)
         
             return redirect(home)
         
     else:
+        print(request.path)
         return render(request, "register\index.html")
