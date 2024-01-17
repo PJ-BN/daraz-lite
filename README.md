@@ -28,7 +28,7 @@ Make sure you have the following software installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/e-commerce-website.git
+   git clone https://github.com/PJ-BN/daraz-lite.git
    cd e-commerce-website
    ```
 2. Install the required dependencies:
